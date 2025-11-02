@@ -1,5 +1,10 @@
 name: Deploy static site to GitHub Pages (gh-pages branch)
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 on:
   push:
     branches: [ main, master ]
