@@ -20,9 +20,8 @@ jobs:
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
-          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: '.'
-          # use GITHUB_TOKEN fallback if deploy_key not provided
           publish_branch: gh-pages
 
       - name: Create Pages site info (optional)
