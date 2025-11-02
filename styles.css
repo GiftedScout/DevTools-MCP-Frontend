@@ -137,7 +137,7 @@ body{font-family: 'Baloo 2', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helv
 .side-panel .close-btn{position:absolute;left:12px;top:12px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:#e8f7ff;padding:6px 8px;border-radius:8px;cursor:pointer}
 .side-panel a{color:#9ffaff;text-decoration:none}
 
-.site-footer{text-align:center;padding:24px;color:#9fe7ef; opacity:0.9}
+.site-footer{text-align:center;padding:24px;color:#9fe7ef; opacity:0.9; position:relative; z-index:1001}
 
 /* responsive: improved mobile layouts and touch-friendly sizes */
 @media (max-width:900px){
