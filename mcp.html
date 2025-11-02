@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome DevTools MCP Server</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;
+        }
+        .container { background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); padding: 60px 80px; max-width: 800px; text-align: center; }
+        .logos { display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 40px; }
+        .logo { width: 120px; height: 120px; transition: transform 0.3s ease; }
+        .logo:hover { transform: scale(1.1); }
+        .plus { font-size: 48px; color: #667eea; font-weight: bold; }
+        h1 { color: #2d3748; font-size: 36px; margin-bottom: 20px; font-weight: 700; }
+        .description { color: #4a5568; font-size: 20px; line-height: 1.6; margin-bottom: 40px; font-weight: 400; }
+        .links { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
+        .link-item { display: block; padding: 15px 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .link-item:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(102,126,234,0.4); }
+        @media (max-width: 768px) {
+            .container { padding: 40px 30px; }
+            .logos { flex-direction: column; gap: 20px; }
+            .plus { transform: rotate(90deg); }
+            h1 { font-size: 28px; }
+            .description { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logos">
+            <img src="" class="logo devtools" alt="DevTools logo">
+            <span class="plus">+</span>
+            <img src="" class="logo mcp" alt="MCP logo">
+        </div>
+        <h1></h1>
+        <p class="description"></p>
+        <div class="links"></div>
+    </div>
+
+    <script>
+        // Page data
+        const data = {
+            images: [
+                'https://cdn.jsdelivr.net/npm/@browser-logos/chrome-devtools@1.0.2/chrome-devtools.svg',
+                'https://avatars.githubusercontent.com/u/182288589?s=200&v=4'
+            ],
+            title: 'Chrome DevTools MCP Server',
+            description: 'A Model Context Protocol server that enables AI assistants to control and inspect web browsers through the Chrome DevTools Protocol.',
+            links: [
+                { text: '📖 Documentation', href: 'https://github.com/ChromeDevTools/chrome-devtools-mcp' },
+                { text: '🔗 MCP Servers', href: 'https://github.com/modelcontextprotocol/servers' },
+                { text: '🛠️ Chrome DevTools Docs', href: 'https://developer.chrome.com/docs/devtools' }
+            ]
+        };
+
+        function renderPage() {
+            const { title, description, links, images } = data;
+            const [devtoolsLogo, mcpLogo] = images;
+
+            const devEl = document.querySelector('.logo.devtools');
+            const mcpEl = document.querySelector('.logo.mcp');
+            if (devEl) devEl.src = devtoolsLogo;
+            if (mcpEl) mcpEl.src = mcpLogo;
+
+            const h1 = document.querySelector('h1');
+            if (h1) h1.textContent = title;
+
+            const desc = document.querySelector('.description');
+            if (desc) desc.textContent = description;
+
+            const linksEl = document.querySelector('.links');
+            if (linksEl && Array.isArray(links)) {
+                linksEl.innerHTML = links.map(link => `<a href="${link.href}" class="link-item" target="_blank" rel="noopener noreferrer">${link.text}</a>`).join('');
+            }
+        }
+    </script>
+
+    <script>
+        // ===== FIXED PART =====
+        // 原始文件中存在一行：
+        // const config = invalidObject.property.value;
+        // 这会在页面加载时抛出 ReferenceError，导致 renderPage 无法执行。
+        // 这里改为安全的默认值，并（如果需要）从 window 或其他来源安全读取配置。
+
+        let config = {};
+        try {
+            // 如果页面确实需要从全局获取配置，可以在这里安全读取，例如：
+            // config = window.__MCP_CONFIG__ || {};
+            // 保持现有的默认值以避免页面崩溃
+            if (typeof window !== 'undefined' && window.__MCP_CONFIG__) {
+                config = window.__MCP_CONFIG__;
+            }
+        } catch (e) {
+            // 以防访问未知对象抛异常，保证页面继续渲染
+            console.warn('Could not read config, using default {}', e);
+        }
+
+        console.log('config:', config);
+
+        // 最后调用渲染函数
+        renderPage();
+    </script>
+</body>
+</html>

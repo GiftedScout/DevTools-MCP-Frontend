@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Lighter, more natural watercolor gradient inspired by nebula hues -->
+    <linearGradient id="lg" x1="0" x2="1">
+      <stop offset="0" stop-color="#07142f"/>
+      <stop offset="0.35" stop-color="#122246"/>
+      <stop offset="0.7" stop-color="#3b1a5a"/>
+      <stop offset="1" stop-color="#162033"/>
+    </linearGradient>
+    <radialGradient id="rg1" cx="30%" cy="20%" r="60%">
+      <stop offset="0" stop-color="#9ffaff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#9ffaff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rg2" cx="78%" cy="72%" r="55%">
+      <stop offset="0" stop-color="#ffb2e6" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#ffb2e6" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softgrain">
+      <feTurbulence baseFrequency="0.45" numOctaves="1" stitchTiles="stitch" result="t"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.04"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#lg)"/>
+  <!-- softer watercolour blobs -->
+  <ellipse cx="24%" cy="18%" rx="320" ry="200" fill="url(#rg1)" opacity="0.95"/>
+  <ellipse cx="76%" cy="70%" rx="380" ry="260" fill="url(#rg2)" opacity="0.95"/>
+  <g opacity="0.08" fill="#ffffff">
+    <circle cx="200" cy="90" r="2"/>
+    <circle cx="260" cy="140" r="1.6"/>
+    <circle cx="330" cy="75" r="1.4"/>
+    <circle cx="860" cy="210" r="1.8"/>
+    <circle cx="930" cy="250" r="1.6"/>
+  </g>
+  <g opacity="0.04" fill="#ffffff">
+    <circle cx="520" cy="360" r="1.2"/>
+    <circle cx="600" cy="420" r="1.0"/>
+    <circle cx="660" cy="380" r="1.2"/>
+  </g>
+</svg>

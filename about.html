@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>关于我 — 千里伯乐</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="/">千里伯乐</a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="gdg.html">关于 DevFest</a>
+        <a href="devtools.html">DevTools MCP</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="content">
+    <article class="profile-card">
+      <div class="avatar">千</div>
+      <h1>千里伯乐</h1>
+      <p class="muted">本科 · 计算机科学与技术</p>
+
+      <h2>兴趣爱好</h2>
+      <ul>
+        <li>天文摄影 — 喜欢在夜空下捕捉星辰与银河</li>
+        <li>羽毛球 — 周末常打，社团成员</li>
+        <li>调教 AI — 玩转 LLM 与自动化脚本</li>
+      </ul>
+
+      <h2>联系方式</h2>
+      <p>电话/微信：+86 15267190283</p>
+
+      <p class="note">欢迎在 DevFest 上来交流或在会后加我联系！</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>返回：<a href="index.html">首页</a></p>
+  </footer>
+  <script>
+    // Enable smooth reveal used by styles.css
+    document.documentElement.classList.add('js-ready');
+  </script>
+  <script>
+    // add a small contact CTA floating button
+    (function(){
+      const a = document.createElement('a');
+      a.href = 'tel:+8615267190283';
+      a.className = 'contact-fab';
+      a.setAttribute('aria-label','Call 千里伯乐');
+      a.innerHTML = '📞';
+      document.body.appendChild(a);
+    })();
+  </script>
+  <script src="assets/site.js"></script>
+    <style>
+      /* about page specific background and avatar replacement */
+      body.about-page{--nasa-hero:url('https://www.nasa.gov/wp-content/uploads/2023/01/webb-tarantula-neb.png');}
+      .about-hero{position:fixed;inset:0;z-index:0;background-image:var(--nasa-hero);background-size:cover;background-position:center;opacity:0.28;mix-blend-mode:screen}
+      .profile-card{position:relative;z-index:2}
+      .avatar{background:linear-gradient(90deg,#ff9de2,#7df9ff);color:#07101a}
+      .hero-avatar{width:140px;height:140px;border-radius:16px;overflow:hidden;display:block}
+    </style>
+    <script>
+      // set about page class & swap avatar for provided image URL
+      document.documentElement.classList.add('about-page');
+      (function(){
+        var avatarEl = document.querySelector('.avatar');
+        if(avatarEl){
+          avatarEl.innerHTML = '';
+          var img = document.createElement('img');
+          // use local avatar if available
+          img.src = 'assets/avatar.png';
+          img.alt = '千里伯乐';
+          img.className = 'hero-avatar';
+          avatarEl.appendChild(img);
+        }
+        // add background node
+        var bg = document.createElement('div');
+        bg.className = 'about-hero';
+        document.body.appendChild(bg);
+      })();
+    </script>
+  <div class="crystal-deco cr-left" aria-hidden="true"><img src="assets/crystal.svg" alt=""/></div>
+  <div class="crystal-deco cr-right" aria-hidden="true"><img src="assets/crystal.svg" alt=""/></div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DevFest — Chrome DevTools MCP Workshop</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="/">千里伯乐 · DevFest Workshop</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+      <div class="nav-links">
+        <a href="gdg.html">关于 GDG / DevFest</a>
+        <a href="devtools.html">DevTools MCP</a>
+        <a href="about.html">关于我</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="stars"></div>
+      <div class="crystal-deco cr-left" aria-hidden="true"><img src="assets/crystal.svg" alt=""/></div>
+      <div class="crystal-deco cr-right" aria-hidden="true"><img src="assets/crystal.svg" alt=""/></div>
+      <div class="hero-inner">
+        <!-- playful sci-fi SVG illustration -->
+        <div class="hero-illustration" aria-hidden="true">
+          <svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet" class="hero-svg">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#7df9ff"/>
+                <stop offset="1" stop-color="#ff9de2"/>
+              </linearGradient>
+            </defs>
+            <g transform="translate(50,20)">
+              <ellipse cx="420" cy="200" rx="110" ry="60" fill="#07101a" opacity="0.12"/>
+              <g class="planet" transform="translate(120,80)">
+                <circle cx="0" cy="0" r="72" fill="url(#g1)" opacity="0.18"/>
+                <circle cx="-8" cy="-6" r="54" fill="#08131a"/>
+                <circle cx="18" cy="12" r="6" fill="#7df9ff"/>
+                <path d="M-70 8 C-30 0 -10 -20 30 -28" stroke="#ff9de2" stroke-width="2" fill="none" opacity="0.6"/>
+              </g>
+              <g class="rocket" transform="translate(360,20) rotate(-12)">
+                <rect x="0" y="0" width="40" height="12" rx="6" fill="#ff9de2"/>
+                <polygon points="40,6 52,2 52,10" fill="#7df9ff"/>
+                <circle cx="12" cy="6" r="4" fill="#07101a"/>
+                <g class="flame">
+                  <ellipse cx="-2" cy="6" rx="6" ry="3" fill="#ff9e66" opacity="0.9"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <h1>Chrome DevTools MCP Server</h1>
+        <p class="subtitle">在 DevFest Workshop 中，我和大家一起探索如何让 AI 与浏览器对话。</p>
+        <div class="cta">
+          <a class="btn" href="devtools.html">了解 MCP</a>
+          <a class="btn ghost" href="gdg.html">关于 DevFest</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cards">
+      <article class="card">
+        <h2>活动概览</h2>
+        <p>Workshop 主题：Chrome DevTools MCP Server — 把 AI 与 DevTools 连接起来，构建更聪明的浏览器工具链。</p>
+      </article>
+
+      <article class="card">
+        <h2>主办与场景</h2>
+        <p>由 GDG 举办的 DevFest 系列线下/线上活动，聚集移动与 Web 开发者，侧重实践与社区交流。</p>
+      </article>
+
+      <article class="card">
+        <h2>参会者</h2>
+        <p>我是 千里伯乐 — 本科/计算机科学与技术，爱好天文摄影、羽毛球与调教 AI。欢迎交流！</p>
+      </article>
+    </section>
+
+    <section class="links-panel">
+      <h3>快速链接</h3>
+      <div class="links-row">
+        <a class="link-pill" href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener">MCP 仓库</a>
+        <a class="link-pill" href="https://developer.chrome.com/docs/devtools" target="_blank" rel="noopener">DevTools 文档</a>
+        <a class="link-pill" href="about.html">我的联系方式</a>
+      </div>
+    </section>
+
+    <section class="explore-map">
+      <h3>🗺️ 探索地图</h3>
+      <div class="map-grid">
+        <a class="map-tile" href="gdg.html">
+          <h4>🏛️ GDG & DevFest</h4>
+          <p>了解 Google Developer Groups 与 DevFest 活动的背景与意义，适合第一次接触社区的同学。</p>
+        </a>
+
+        <a class="map-tile" href="devtools.html">
+          <h4>⚙️ DevTools MCP</h4>
+          <p>深入了解 MCP 与 Chrome DevTools 的结合与示例用例，包含安全建议与部署思路。</p>
+        </a>
+
+        <a class="map-tile" href="about.html">
+          <h4>👤 关于我</h4>
+          <p>千里伯乐 — 学生与爱好者的介绍，联系方式与兴趣爱好。</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="schedule">
+      <h3>Workshop 日程（示例）</h3>
+      <div class="schedule-grid">
+        <div class="sched-item">
+          <strong>09:30</strong>
+          <span>签到 & 社交</span>
+        </div>
+        <div class="sched-item">
+          <strong>10:00</strong>
+          <span>主题介绍：MCP 与 DevTools</span>
+        </div>
+        <div class="sched-item">
+          <strong>11:00</strong>
+          <span>Hands-on：运行 MCP Server</span>
+        </div>
+        <div class="sched-item">
+          <strong>14:00</strong>
+          <span>示例：AI 控制 DevTools</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 千里伯乐 — DevFest Workshop · Chrome DevTools MCP Server</p>
+  </footer>
+
+  <script>
+    // 尝试平滑渐入，页面无需复杂 JS
+    document.documentElement.classList.add('js-ready');
+  </script>
+  <script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DevTools MCP 简介</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="/">千里伯乐 · DevTools MCP</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="gdg.html">关于 DevFest</a>
+        <a href="about.html">关于我</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="content">
+    <article class="article-card">
+      <h1>什么是 Model Context Protocol (MCP)</h1>
+      <p>MCP（Model Context Protocol）是一种桥接大型语言模型（LLM）与应用上下文的协议。它把应用状态（例如浏览器的 DOM、网络请求、截图、日志）序列化成模型可理解的上下文，并将模型输出的动作映射为受控的操作。</p>
+
+      <h2>核心元素</h2>
+      <ul>
+        <li><strong>Context</strong> — 当前应用的状态：DOM、网络、控制台信息、截图、用户会话等。</li>
+        <li><strong>Model</strong> — 运行的 LLM 或模型代理，基于上下文生成建议或动作。</li>
+        <li><strong>Actions</strong> — 模型建议的动作（受限的命令集合，例如查询 DOM、截屏、执行脚本）。</li>
+        <li><strong>Server</strong> — MCP Server 负责收集上下文、调用模型、校验动作并将其下发到目标（如 DevTools）。</li>
+      </ul>
+
+      <h2>典型工作流</h2>
+      <ol>
+        <li>MCP Server 收集浏览器上下文（例如当前页面 DOM、控制台、网络记录与截图）。</li>
+        <li>上下文被发送到模型，模型返回一组建议动作或查询请求。</li>
+        <li>Server 校验动作是否在白名单内并执行（通过 DevTools 协议）。</li>
+        <li>执行结果与新的上下文会再次回传，形成闭环以便连续交互。</li>
+      </ol>
+
+      <h2>示例：模型发出一个简单查询</h2>
+      <pre><code>{
+  "action": "runtime.evaluate",
+  "params": { "expression": "document.querySelectorAll('img').length" }
+}
+      </code></pre>
+
+      <h2>部署与本地调试（快速入门）</h2>
+      <p>通常你可以按以下步骤在本地体验 MCP 与 DevTools 的结合：</p>
+      <ol>
+        <li>克隆官方或示例实现：<code>git clone https://github.com/ChromeDevTools/chrome-devtools-mcp</code></li>
+        <li>进入示例目录并安装依赖：<code>npm install</code></li>
+        <li>启动示例 server：<code>node examples/simple-server/server.js --port 3000</code></li>
+        <li>在 Chrome 中打开 DevTools 并连接到示例 Server（或使用示例 UI）。</li>
+      </ol>
+
+      <h2>安全建议</h2>
+      <ul>
+        <li>使用动作白名单限制模型能执行的 DevTools 命令。</li>
+        <li>在执行敏感操作前加入人工确认或多因素审批流程。</li>
+        <li>记录完整的审计日志以便回溯模型行为。</li>
+      </ul>
+
+      <h2>扩展用例</h2>
+      <ul>
+        <li>自动化回归检测与智能化差异报告。</li>
+        <li>用自然语言快速生成交互式测试脚本。</li>
+        <li>AI 驱动的可访问性检查与修复建议。</li>
+      </ul>
+
+      <h2>参考</h2>
+      <p><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener">MCP 仓库（GitHub）</a> · <a href="https://developer.chrome.com/docs/devtools/" target="_blank" rel="noopener">Chrome DevTools 文档</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>返回：<a href="index.html">首页</a></p>
+  </footer>
+  <script>
+    // Enable smooth reveal used by styles.css
+    document.documentElement.classList.add('js-ready');
+  </script>
+  <script src="assets/site.js"></script>
+  <div class="crystal-deco cr-left" aria-hidden="true"><img src="assets/crystal.svg" alt=""/></div>
+  <div class="crystal-deco cr-right" aria-hidden="true"><img src="assets/crystal.svg" alt=""/></div>
+</body>
+</html>

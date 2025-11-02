@@ -1,0 +1,42 @@
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+concurrency:
+  group: 'pages-deploy'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v3
+
+      # If you have a build step (e.g., bundler, static-site generator), add it here.
+      # This site is static HTML/CSS/JS so normally no build step is required.
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
+
+      # Optional: if you want to create a CNAME file for a custom domain, uncomment and set below
+      # - name: Create CNAME
+      #   run: echo "your.custom.domain" > CNAME
